@@ -14,7 +14,329 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          booking_type: string
+          check_in_date: string | null
+          check_out_date: string | null
+          created_at: string
+          experience_id: string | null
+          guests: number | null
+          guide_id: string | null
+          hotel_id: string | null
+          id: string
+          notes: string | null
+          status: string | null
+          total_price: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          booking_type: string
+          check_in_date?: string | null
+          check_out_date?: string | null
+          created_at?: string
+          experience_id?: string | null
+          guests?: number | null
+          guide_id?: string | null
+          hotel_id?: string | null
+          id?: string
+          notes?: string | null
+          status?: string | null
+          total_price: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          booking_type?: string
+          check_in_date?: string | null
+          check_out_date?: string | null
+          created_at?: string
+          experience_id?: string | null
+          guests?: number | null
+          guide_id?: string | null
+          hotel_id?: string | null
+          id?: string
+          notes?: string | null
+          status?: string | null
+          total_price?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_experience_id_fkey"
+            columns: ["experience_id"]
+            isOneToOne: false
+            referencedRelation: "experiences"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_guide_id_fkey"
+            columns: ["guide_id"]
+            isOneToOne: false
+            referencedRelation: "local_guides"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_hotel_id_fkey"
+            columns: ["hotel_id"]
+            isOneToOne: false
+            referencedRelation: "hotels"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      experiences: {
+        Row: {
+          created_at: string
+          description: string | null
+          duration_hours: number | null
+          guide_id: string | null
+          id: string
+          images: string[] | null
+          is_active: boolean | null
+          location: string | null
+          max_group_size: number | null
+          price: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          duration_hours?: number | null
+          guide_id?: string | null
+          id?: string
+          images?: string[] | null
+          is_active?: boolean | null
+          location?: string | null
+          max_group_size?: number | null
+          price: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          duration_hours?: number | null
+          guide_id?: string | null
+          id?: string
+          images?: string[] | null
+          is_active?: boolean | null
+          location?: string | null
+          max_group_size?: number | null
+          price?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "experiences_guide_id_fkey"
+            columns: ["guide_id"]
+            isOneToOne: false
+            referencedRelation: "local_guides"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      hotels: {
+        Row: {
+          address: string | null
+          amenities: string[] | null
+          created_at: string
+          description: string | null
+          id: string
+          images: string[] | null
+          is_active: boolean | null
+          location: string
+          name: string
+          price_per_night: number
+          rating: number | null
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          amenities?: string[] | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          images?: string[] | null
+          is_active?: boolean | null
+          location: string
+          name: string
+          price_per_night: number
+          rating?: number | null
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          amenities?: string[] | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          images?: string[] | null
+          is_active?: boolean | null
+          location?: string
+          name?: string
+          price_per_night?: number
+          rating?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      local_guides: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          id: string
+          is_active: boolean | null
+          is_verified: boolean | null
+          languages: string[] | null
+          name: string
+          price_per_day: number | null
+          rating: number | null
+          specialties: string[] | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          is_verified?: boolean | null
+          languages?: string[] | null
+          name: string
+          price_per_day?: number | null
+          rating?: number | null
+          specialties?: string[] | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          is_verified?: boolean | null
+          languages?: string[] | null
+          name?: string
+          price_per_day?: number | null
+          rating?: number | null
+          specialties?: string[] | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          preferred_language: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          preferred_language?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          preferred_language?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          booking_id: string | null
+          comment: string | null
+          created_at: string
+          experience_id: string | null
+          guide_id: string | null
+          hotel_id: string | null
+          id: string
+          images: string[] | null
+          rating: number
+          user_id: string
+        }
+        Insert: {
+          booking_id?: string | null
+          comment?: string | null
+          created_at?: string
+          experience_id?: string | null
+          guide_id?: string | null
+          hotel_id?: string | null
+          id?: string
+          images?: string[] | null
+          rating: number
+          user_id: string
+        }
+        Update: {
+          booking_id?: string | null
+          comment?: string | null
+          created_at?: string
+          experience_id?: string | null
+          guide_id?: string | null
+          hotel_id?: string | null
+          id?: string
+          images?: string[] | null
+          rating?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "reviews_experience_id_fkey"
+            columns: ["experience_id"]
+            isOneToOne: false
+            referencedRelation: "experiences"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "reviews_guide_id_fkey"
+            columns: ["guide_id"]
+            isOneToOne: false
+            referencedRelation: "local_guides"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "reviews_hotel_id_fkey"
+            columns: ["hotel_id"]
+            isOneToOne: false
+            referencedRelation: "hotels"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
