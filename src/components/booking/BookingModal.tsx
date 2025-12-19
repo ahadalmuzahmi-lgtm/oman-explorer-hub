@@ -160,7 +160,7 @@ const BookingModal = ({ isOpen, onClose, type, item }: BookingModalProps) => {
           <div className="bg-muted rounded-lg p-4">
             <div className="flex justify-between items-center">
               <span className="text-muted-foreground">Total</span>
-              <span className="text-2xl font-bold text-gold">${calculateTotal()}</span>
+              <span className="text-2xl font-bold text-gold">{calculateTotal()} OMR</span>
             </div>
           </div>
 
