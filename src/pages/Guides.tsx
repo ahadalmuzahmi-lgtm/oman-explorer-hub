@@ -110,7 +110,7 @@ const Guides = () => {
 
                     <div className="flex items-center justify-between pt-4 border-t border-border">
                       <div>
-                        <span className="text-2xl font-bold text-gold">${guide.price_per_day}</span>
+                        <span className="text-2xl font-bold text-gold">{guide.price_per_day} OMR</span>
                         <span className="text-muted-foreground text-sm"> / day</span>
                       </div>
                       <Button variant="gold" size="sm" onClick={() => handleBook(guide)}>

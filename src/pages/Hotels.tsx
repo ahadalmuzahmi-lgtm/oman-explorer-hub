@@ -108,7 +108,7 @@ const Hotels = () => {
 
                       <div className="flex items-center justify-between pt-4 border-t border-border">
                         <div>
-                          <span className="text-2xl font-bold text-gold">${hotel.price_per_night}</span>
+                          <span className="text-2xl font-bold text-gold">{hotel.price_per_night} OMR</span>
                           <span className="text-muted-foreground text-sm"> / night</span>
                         </div>
                         <Button variant="gold" size="sm" onClick={() => handleBook(hotel)}>

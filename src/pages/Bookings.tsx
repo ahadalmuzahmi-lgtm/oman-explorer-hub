@@ -157,7 +157,7 @@ const Bookings = () => {
                       </div>
 
                       <div className="text-right">
-                        <div className="text-2xl font-bold text-gold">${booking.total_price}</div>
+                        <div className="text-2xl font-bold text-gold">{booking.total_price} OMR</div>
                         <div className="text-sm text-muted-foreground capitalize">{booking.booking_type}</div>
                       </div>
                     </div>
